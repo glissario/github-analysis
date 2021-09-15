@@ -24,6 +24,12 @@ nickname.addEventListener("keydown", function (e) {
       repoInfos = [];
       issueInfos = [];
       allIssues = [];
+      const repos = document.querySelector("#repos").firstChild;
+      repos.remove();
+      const issues = document.querySelector("#issues").firstChild;
+      issues.remove();
+      const outputIssues = document.querySelector("#openIssues").firstChild;
+      outputIssues.remove();
     }
     getRepos();
   }
@@ -129,12 +135,17 @@ function createDiagram(y) {
   var cv = canvas.getContext("2d");
   cv.clearRect(0, 0, canvasWidth, canvasHeight);
   //Options Grid
-  var graphGridSize = 20;
+  var graphGridSize = 50;
   var graphGridX = (canvasWidth / graphGridSize).toFixed();
   //Draw Grid
   for (var i = 0; i < graphGridX; i++) {
     cv.moveTo(canvasWidth, graphGridSize * i);
     cv.lineTo(0, graphGridSize * i);
+    cv.fillText(
+      Math.floor((canvasHeight - graphGridSize * i) * (y / canvasHeight)) + "h",
+      5,
+      i * 50 - 3
+    );
   }
   cv.strokeStyle = "#dbdbdb";
   cv.stroke();
