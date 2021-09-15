@@ -3,6 +3,10 @@ let repoInfos = [];
 let issueInfos = [];
 let allIssues = [];
 
+const canvas = document.getElementById("issues_diagramm");
+const canvasWidth = 1200;
+const canvasHeight = 400;
+
 class Issue {
   constructor(name, status, duration) {
     this.name = name;
@@ -13,6 +17,14 @@ class Issue {
 
 nickname.addEventListener("keydown", function (e) {
   if (e.keyCode === 13) {
+    if (repoInfos.length > null) {
+      //canvas = document.getElementById("issues_diagramm");
+      const context = canvas.getContext("2d");
+      context.clearRect(0, 0, canvasWidth, canvasHeight);
+      repoInfos = [];
+      issueInfos = [];
+      allIssues = [];
+    }
     getRepos();
   }
 });
@@ -114,12 +126,8 @@ function longestIssue() {
 }
 
 function createDiagram(y) {
-  var canvas = document.getElementById("issues_diagramm");
-  var canvasWidth = 1200;
-  var canvasHeight = 400;
-  canvas.setAttribute("width", canvasWidth);
-  canvas.setAttribute("height", canvasHeight);
   var cv = canvas.getContext("2d");
+  cv.clearRect(0, 0, canvasWidth, canvasHeight);
   //Options Grid
   var graphGridSize = 20;
   var graphGridX = (canvasWidth / graphGridSize).toFixed();
@@ -160,7 +168,7 @@ function createDiagram(y) {
     );
     cv.fillStyle = graphTextcolor;
 
-    if (allIssues[i].status === "open" || allIssues[i].duration > 100) {
+    if (allIssues[i].status === "open" || allIssues[i].duration > 72) {
       cv.fillText(
         allIssues.length - i,
         graphWidth + (allIssues.length - i - 1) * graphWidth + graphPadding,
