@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Analysis</title>
+  </head>
+  <body>
+    <header>
+      <h1>GitHub Analysis</h1>
+    </header>
+    <main>
+      <section class="data-input">
+        <label>Enter Nickname:</label>
+        <input type="text" id="get-nick" class="get-nick" />
+      </section>
+      <section class="data-output">
+        <ul>
+          <li>
+            <label>Repositories:</label>
+            <span id="repos"></span>
+          </li>
+          <li>
+            <label>Issues im bootcamp-schedule:</label>
+            <span id="issues"></span>
+          </li>
+          <li>
+            <label>davon offene Issues</label>
+            <span id="openIssues"></span>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <canvas
+          id="issues_diagramm"
+          style="border: 1px solid black; border-radius: 2px"
+        ></canvas>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
